@@ -1,0 +1,94 @@
+- name: Azure Create virtual network
+  azure_rm_virtualnetwork:
+    resource_group: "{{ resource_group }}"
+    name: "{{ vm_name }}"
+    address_prefixes: "20.0.0.0/16"
+- name: Azure Add subnet
+  azure_rm_subnet:
+    resource_group: "{{ resource_group }}"
+    name: "{{ vm_name }}"
+    address_prefix: "20.0.1.0/24"
+    virtual_network: "{{ vm_name }}"
+
+- name: Azure Create Network Security Group that allows SSH and HTTP Ports
+  azure_rm_securitygroup:
+    resource_group: "{{ resource_group }}"
+    name: "{{ vm_name }}"
+    purge_rules: yes
+    rules:
+      - name: SSH
+        protocol: Tcp
+        destination_port_range: 22
+        access: Allow
+        priority: 1001
+        direction: Inbound
+      - name: HTTP
+        protocol: Tcp
+        destination_port_range: 80
+        access: Allow
+        priority: 1002
+        direction: Inbound
+      - name: HTTPS
+        protocol: Tcp
+        destination_port_range: 443
+        access: Allow
+        priority: 1003
+        direction: Inbound
+      - name: LB
+        protocol: Tcp
+        destination_port_range: 8888
+        access: Allow
+        priority: 1004
+        direction: Inbound
+      - name: RDP
+        protocol: Tcp
+        destination_port_range: 3389
+        access: Allow
+        priority: 500
+        direction: Inbound
+      - name: WINRM
+        protocol: Tcp
+        destination_port_range: 5985
+        access: Allow
+        priority: 501
+        direction: Inbound
+      - name: WINRMs
+        protocol: Tcp
+        destination_port_range: 5986
+        access: Allow
+        priority: 502
+        direction: Inbound
+
+# Create windows
+- name: Create windows public IP address
+  azure_rm_publicipaddress:
+    resource_group: "{{ resource_group }}"
+    allocation_method: Static
+    name: mswin
+
+- name: Create windows virtual network inteface card
+  azure_rm_networkinterface:
+    resource_group: "{{ resource_group }}"
+    name: mswin
+    virtual_network: "{{ vm_name }}"
+    subnet: "{{ vm_name }}"
+    public_ip_name: mswin
+    security_group: "{{ vm_name }}"
+
+- name: Azure Create windows VM
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource_group }}"
+    name: mswin
+    vm_size: Standard_DS1_v2
+    os_type: Windows
+    admin_username: az-user
+    admin_password: Password@123
+    network_interfaces: mswin
+    tags:
+      tag_ansible_group : mswin
+    image:
+      publisher: MicrosoftWindowsServer
+      offer: WindowsServer
+      sku: 2016-Datacenter
+      version: latest
+  register: output
