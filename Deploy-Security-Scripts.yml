@@ -9,6 +9,7 @@
     vm_name: MSW2016
     resource_group: winser16
     location: australiacentral
+    os_image: win
   tasks:
     - block:
       - name: set fact for Extension Code
