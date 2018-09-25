@@ -174,4 +174,4 @@
             version: latest                                                     
         register: output    
         
-      when: "(cloud_provider == 'azure' and os_image=='WIN')"                                                          
+      when: os_image=='WIN'                                                         
