@@ -75,7 +75,7 @@
             sku: 7-RAW
             version: latest   
             
-      when: cloud_provider == 'azure' and os_image=='rhel'      
+      when: "(cloud_provider == 'azure' and os_image=='rhel')"     
       
       
     - block:
@@ -174,4 +174,4 @@
             version: latest                                                     
         register: output    
         
-      when: cloud_provider == 'azure' and os_image=='WIN'                                                          
+      when: "(cloud_provider == 'azure' and os_image=='WIN')"                                                          
