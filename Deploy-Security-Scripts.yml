@@ -6,9 +6,8 @@
   hosts: localhost 
   gather_facts: False
   vars: 
-    resource_group: mswin
     vm_name: MSW2016
-    resource_group: ansibletower
+    resource_group: winser16
     location: australiacentral
   tasks:
     - block:
