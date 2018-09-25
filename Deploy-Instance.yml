@@ -8,7 +8,7 @@
   gather_facts: False
 
   roles:  
-  - { role: cchurch.win-ec2, when: cloud_provider == 'ec2'}
-  - { role: azure-win, when: cloud_provider == 'azure', when: os_image == 'WIN'}
-  - { role: azure-rhel, when: cloud_provider == 'azure', when: os_image == 'rhel'}
-  - { role: ec2-rhel, when: cloud_provider == 'ec2', when: os_image == 'rhel'}
+  - { role: cchurch.win-ec2, when: cloud_provider == 'ec2' and os_image == 'WIN'}
+  - { role: azure-win, when: cloud_provider == 'azure' and os_image == 'WIN'}
+  - { role: azure-rhel, when: cloud_provider == 'azure' and os_image == 'rhel'}
+  - { role: ec2-rhel, when: cloud_provider == 'ec2' and os_image == 'rhel'}
