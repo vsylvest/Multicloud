@@ -3,13 +3,12 @@
 # This playbook create a Windows Server VM in Azure with ports open for ssh, http(s), rdp and winrm
 
 ---
-- name : Deploy Windows on Azure
+- name : Provision instance
   hosts: localhost 
   gather_facts: False
-  vars: 
 
   roles:  
-  - { role: cchurch.win-ec2, when: cloud_provider == 'ec2', when: os_image == 'WIN'}
+  - { role: cchurch.win-ec2, when: cloud_provider == 'ec2'}
   - { role: azure-win, when: cloud_provider == 'azure', when: os_image == 'WIN'}
   - { role: azure-rhel, when: cloud_provider == 'azure', when: os_image == 'rhel'}
   - { role: ec2-rhel, when: cloud_provider == 'ec2', when: os_image == 'rhel'}
