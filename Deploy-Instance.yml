@@ -6,6 +6,5 @@
 - name : Deploy Windows on Azure
   hosts: localhost 
   gather_facts: False
-  vars: 
   roles:
-    - "{{ cloud_provider }}"-"{{ os_image }}"
+    - "'{{ cloud_provider }}'-'{{ os_image }}'"
