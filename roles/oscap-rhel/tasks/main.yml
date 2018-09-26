@@ -1,3 +1,11 @@
+
+  - name: Add Subscription to RHEL
+    redhat_subscription:
+      state: present
+      username: "{{ subscription_user }}" 
+      password: "{{ subscription_pass }}" 
+      auto_attach: true
+
   - name: install openscap scanner, ssg and httpd
     package:
       name: "{{ item }}"
