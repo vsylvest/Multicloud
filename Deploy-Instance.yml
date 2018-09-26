@@ -3,7 +3,7 @@
 # This playbook create a Windows Server VM in Azure with ports open for ssh, http(s), rdp and winrm
 
 ---
-- name : Deploy Windows on Azure
+- name : Provision Server on Azure
   hosts: localhost 
   gather_facts: False
   roles:
