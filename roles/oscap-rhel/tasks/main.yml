@@ -1,0 +1,30 @@
+  - name: install openscap scanner, ssg and httpd
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+    - openscap-scanner
+    - scap-security-guide
+    - httpd
+
+  - block:
+    - name: run openscap
+      command: oscap xccdf eval \
+        --profile {{ oscap_profile }} \
+        --results-arf /tmp/oscap-arf.xml \
+        --report /tmp/oscap-report.html \
+        --fetch-remote-resources \
+        /usr/share/xml/scap/ssg/content/{{ oscap_policy }}.xml
+      ignore_errors: yes
+
+    always:
+    - name: Copy report for serving
+      copy:
+        src: /tmp/oscap-report.html
+        dest: /var/www/html/index.html
+        remote_src: yes
+        
+  - name: start httpd
+    service:
+      name: httpd
+      state: started

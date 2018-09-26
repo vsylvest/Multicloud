@@ -1,0 +1,30 @@
+---
+- name: Running Compliance against RHEL
+  hosts:
+    rhel
+  become: true
+  roles:
+    - oscap-rhel
+   
+
+# - name: Running Compliance against Centos
+#   hosts:
+#     tag_Name_centos
+#   become: true
+#   roles:
+#     - oscap-centos
+
+# - name: Running Compliance against Ubuntu
+#   hosts:
+#     tag_Name_ubuntu
+#   become: true
+#  roles:
+#    - oscap-ubuntu
+  
+
+
+    
+    
+    
+
+
