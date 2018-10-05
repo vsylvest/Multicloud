@@ -2,7 +2,7 @@
 
 
   - name: Download Public Key for Repo
-    shell: "curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc"
+    shell: "curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc warn=False"
 
   - name: Configure the public key
     shell: "sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg"
@@ -11,7 +11,7 @@
     shell: "sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release"
     
   - name: Download Package version
-    shell: "curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.1-19.noarch.rpm"
+    shell: "curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.1-19.noarch.rpm warn=False"
     
   - name: Install RPM
     shell: "sudo rpm -U azureclient.rpm"

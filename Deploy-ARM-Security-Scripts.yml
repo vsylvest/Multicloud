@@ -34,6 +34,6 @@
     - block:
       - name: No extenstion for Rhel
         debug: 
-          msg: "no security script for rhel"
+          msg: "no extra security script for rhel - ssh / http ports already enabled"
 
       when: os_image == 'rhel'    
