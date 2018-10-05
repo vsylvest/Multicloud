@@ -1,0 +1,15 @@
+# Description
+# ===========
+# This playbook installs putty on Windows hosts
+
+---
+- name:  Basic Windows Playbook
+  hosts:
+    mswin
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+  tasks:
+    - name: Patch Windows
+      win_update: 
+
