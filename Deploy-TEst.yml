@@ -13,7 +13,7 @@
     - name: install hotfix
       win_updates:
         category_names: 
-        - SecurityUpdates
+        - Updates
         whitelist: 
         - KB4091664
       tags: 
