@@ -11,6 +11,6 @@
     ansible_winrm_server_cert_validation: ignore
   tasks:
     - name: install putty
-      win_update:
+      win_updates:
         category_names: SecurityUpdate
         whitelist: KB4073117
