@@ -13,6 +13,6 @@
     - name: install putty
       win_updates:
         category_names: 
-        - SecurityUpdate
+        - SecurityUpdates
         whitelist: 
         - KB4073117
