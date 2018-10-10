@@ -1,19 +1,35 @@
 # Description
 # ===========
-# This playbook installs security patch on Windows hosts
+# This playbook installs hotfix on Windows hosts
 
 ---
-- name: Patch Windows Security
+- name:  Basic Windows Playbook
   hosts:
     mswin
   vars:
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
   tasks:
-    win_update:
-      category_names:
-      - SecurityUpdate
-      whitelist:
-      - KB405689
-      - KB4073117
-
+    - name: install hotfix
+      win_updates:
+        category_names: 
+        - "{{ category }}"
+        whitelist: 
+        - "{{ hotfix }}"
+        reboot: yes
+      tags: 
+      - install
+      
+    - name: remove hotfix
+      win_hotfix:
+        hotfix_kb: "{{ hotfix }}"
+        state: absent
+      register: hotfix_uninstall
+      tags: 
+      - uninstall
+      
+    - name: Reboot Windows
+      win_reboot:
+      when: hotfix_uninstall.reboot_required
+      tags: 
+      - uninstall
