@@ -24,5 +24,12 @@
       win_hotfix:
         hotfix_kb: KB4091664
         state: absent
+      register: hotfix_uninstall
+      tags: 
+      - uninstall
+      
+    - name: remove hotfix
+      win_reboot:
+      when: hotfix_uninstall.reboot_required
       tags: 
       - uninstall
