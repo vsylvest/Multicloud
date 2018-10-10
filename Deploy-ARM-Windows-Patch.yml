@@ -10,11 +10,10 @@
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
   tasks:
-    - name: Patch Windows
-      win_update:
-        category_names:
-        - SecurityUpdate
-        whitelist:
-        - KB4056892
-        - KB4073117
+    win_update:
+      category_names:
+      - SecurityUpdate
+      whitelist:
+      - KB405689
+      - KB4073117
 

@@ -11,6 +11,6 @@
     ansible_winrm_server_cert_validation: ignore
   tasks:
     - name: install putty
-      win_chocolatey: 
+      win_chocolatey:
         name: putty.install
         state: present
