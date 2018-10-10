@@ -1,9 +1,9 @@
 # Description
 # ===========
-# This playbook installs putty on Windows hosts
+# This playbook installs security patch on Windows hosts
 
 ---
-- name:  Basic Windows Playbook
+- name:  Patch Windows Security
   hosts:
     mswin
   vars:
@@ -12,4 +12,9 @@
   tasks:
     - name: Patch Windows
       win_update: 
+        category_name:
+        - SecurityUpdates
+        whitelist:
+        - KB4056892
+        - KB4073117
 
