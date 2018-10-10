@@ -16,6 +16,7 @@
         - Updates
         whitelist: 
         - KB4091664
+        reboot: yes
       tags: 
       - install
       
