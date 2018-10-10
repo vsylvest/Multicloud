@@ -13,22 +13,22 @@
     - name: install hotfix
       win_updates:
         category_names: 
-        - Updates
+        - {{ category }}
         whitelist: 
-        - KB4091664
+        - {{ hotfix }}
         reboot: yes
       tags: 
       - install
       
     - name: remove hotfix
       win_hotfix:
-        hotfix_kb: KB4091664
+        hotfix_kb: {{ hotfix }}
         state: absent
       register: hotfix_uninstall
       tags: 
       - uninstall
       
-    - name: remove hotfix
+    - name: Reboot Windows
       win_reboot:
       when: hotfix_uninstall.reboot_required
       tags: 
