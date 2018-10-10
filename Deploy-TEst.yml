@@ -1,6 +1,6 @@
 # Description
 # ===========
-# This playbook installs putty on Windows hosts
+# This playbook installs hotfix on Windows hosts
 
 ---
 - name:  Basic Windows Playbook
@@ -10,9 +10,18 @@
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
   tasks:
-    - name: install putty
+    - name: install hotfix
       win_updates:
         category_names: 
         - SecurityUpdates
         whitelist: 
         - KB4091664
+      tags: 
+      - install
+      
+    - name: remove hotfix
+      win_hotfix:
+        hotfix_kb: KB4091664
+        state: absent
+      tags: 
+      - uninstall
