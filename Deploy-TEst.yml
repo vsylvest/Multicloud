@@ -12,5 +12,7 @@
   tasks:
     - name: install putty
       win_updates:
-        category_names: SecurityUpdate
-        whitelist: KB4073117
+        category_names: 
+        - SecurityUpdate
+        whitelist: 
+        - KB4073117
