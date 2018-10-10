@@ -13,16 +13,16 @@
     - name: install hotfix
       win_updates:
         category_names: 
-        - {{ category }}
+        - "{{ category }}"
         whitelist: 
-        - {{ hotfix }}
+        - "{{ hotfix }}"
         reboot: yes
       tags: 
       - install
       
     - name: remove hotfix
       win_hotfix:
-        hotfix_kb: {{ hotfix }}
+        hotfix_kb: "{{ hotfix }}"
         state: absent
       register: hotfix_uninstall
       tags: 
