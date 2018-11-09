@@ -1,0 +1,10 @@
+# Description
+# ===========
+# This playbook create a Windows Server VM in Azure with ports open for ssh, http(s), rdp and winrm
+
+---
+- name : Provision windows server on Azure
+  hosts: localhost 
+  gather_facts: False
+  roles:
+    - azure-win
