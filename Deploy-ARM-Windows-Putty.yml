@@ -14,3 +14,4 @@
       win_chocolatey:
         name: putty.install
         state: present
+        force: yes
