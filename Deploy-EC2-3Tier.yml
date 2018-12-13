@@ -1,0 +1,30 @@
+---
+- name: add in memory hosts
+  hosts: all
+  roles:
+  - { name: openstack_add_host }
+
+- name: enable repos on all instances
+  hosts: QA
+  gather_facts: false
+  roles:
+  - { name: 3tier_repo }
+
+- name: Install HA on frontend
+  hosts: frontends
+  gather_facts: false
+  roles:
+  - { name: 3tier_haproxy }
+
+- name: Install postgres on DB
+  hosts: appdbs
+  gather_facts: false
+  roles:
+  - { name: 3tier_postgres }
+ 
+- name: Install tomcat on apps
+  hosts: apps
+  gather_facts: false
+  roles:
+  - { name: 3tier_tomcat }
+

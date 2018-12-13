@@ -1,0 +1,25 @@
+  - name: install postgres
+    yum:
+      name: postgresql-server
+      state: latest
+      
+  - name: enable postgres at boot
+    service:
+      name: postgresql
+      enabled: yes
+
+  - name: check condition for /var/lib/pgsql/data
+    shell: test "$(ls /var/lib/pgsql/data/)"
+    register: filespresent
+    ignore_errors: yes
+
+  - name: initialize postgres
+    command: postgresql-setup initdb
+
+  - name: check initialisation of postgres
+    command: chkconfig postgresql on
+    
+  - name: start postgres service
+    service:
+      name: postgresql.service
+      state: started

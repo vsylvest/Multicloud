@@ -1,0 +1,19 @@
+  - name: install HAProxy
+    yum:
+      name=haproxy
+      state=latest
+      
+  - name: Start the HAProxy service
+    service:
+      name: haproxy
+      state: started
+      
+  - name: copy the haproxy configuration file
+    template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+
+  - name: restart HAproxy
+    service:
+      name: haproxy
+      state: restarted
