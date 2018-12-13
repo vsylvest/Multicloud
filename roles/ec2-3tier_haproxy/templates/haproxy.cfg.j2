@@ -27,5 +27,5 @@ backend app-servers
     option forwardfor
     
  {% for server in groups.tag_Name_3TierWebserver %}
-    server {{ server.split('.')[0] }}  {{ server }}:8080 cookie {{ server.split('.')[0]  }} check
+    server {{ server.split('.')[0] }}  {{ server }}:80 cookie {{ server.split('.')[0]  }} check
  {% endfor %}
