@@ -16,7 +16,7 @@ ec2_image: ami-67589505
 ec2_instance_type: m1.small
 ec2_keypair: ec2-key
 ec2_security_group: sg-09ed47efcf60a2cc3
-ec2_subnet_id: subnet-60449038
+ec2_subnet_id: subnet-09e99805c7d738722
 instance_tag: 'cattle'
 wait_for_port: 22
 
