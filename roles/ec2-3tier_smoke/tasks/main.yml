@@ -7,7 +7,7 @@
 
 - name: print details
   debug: 
-    var: "{{ webpage }}"
+    msg: "{{ webpage }}"
 
 #
 #- name: Fail if Status Code is not 200
