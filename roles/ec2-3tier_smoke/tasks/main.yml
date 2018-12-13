@@ -1,9 +1,9 @@
 ---
 - name: Curl website
- uri:
-   url: "http://{{ inventory_hostname }}"
-   return_content: yes
- register: webpage  
+  uri:
+    url: "http://{{ inventory_hostname }}"
+    return_content: yes
+  register: webpage  
 
 - name: print details
   debug: 
