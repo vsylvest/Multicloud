@@ -5,7 +5,8 @@
   register: proxy
 
 
-- debug: print details
+- name: print details
+  debug:
     vars: "{{ proxy }}"
     
 
