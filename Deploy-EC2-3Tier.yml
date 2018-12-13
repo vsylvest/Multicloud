@@ -25,7 +25,8 @@
   - { name: ec2-3tier_tomcat }
 
 - name: Install tomcat on Webservers
-  hosts: localhost
+  hosts: tag_Name_3Tier_Frontend
   gather_facts: false
   roles:
   - { name: ec2-3tier_smoke }
+  tags: smoke
