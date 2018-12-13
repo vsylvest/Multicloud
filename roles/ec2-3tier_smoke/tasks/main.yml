@@ -7,7 +7,7 @@
 
 - name: print details
   debug:
-    vars: "{{ proxy }}"
+    var: "{{ proxy }}"
     
 
 # - name: Curl website
