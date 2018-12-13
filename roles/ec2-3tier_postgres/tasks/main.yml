@@ -15,6 +15,7 @@
 
   - name: initialize postgres
     command: postgresql-setup initdb
+    ignore_errors: yes
 
   - name: check initialisation of postgres
     command: chkconfig postgresql on
