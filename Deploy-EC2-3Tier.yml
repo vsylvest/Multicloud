@@ -1,6 +1,6 @@
 ---
 - name: enable repos on all instances
-  hosts: tag_ansible_group
+  hosts: localhost
   gather_facts: false
   roles:
   - { name: ec2-3tier}
