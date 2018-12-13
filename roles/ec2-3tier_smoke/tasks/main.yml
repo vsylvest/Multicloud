@@ -1,24 +1,14 @@
 ---
-# tasks file for check
-- name: Gather IP address of Proxy Server
-  setup:
-  register: proxy
-
+- name: Curl website
+ uri:
+   url: "http://{{ inventory_hostname }}"
+   return_content: yes
+ register: webpage  
 
 - name: print details
-  debug:
-    var: "{{ proxy }}"
-    
+  debug: 
+    var: "{{ webpage }}"
 
-# - name: Curl website
-#  uri:
-#    url: "http://{{item.public_v4}}"
-#    return_content: yes
-#  with_items:
-#    - "{{ openstack_info.ansible_facts.openstack_servers }}"
-#  register: webpage  
-#  tags:
-#    - osp.smoke
 #
 #- name: Fail if Status Code is not 200
 #  fail:
