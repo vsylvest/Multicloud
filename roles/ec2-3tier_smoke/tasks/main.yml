@@ -9,7 +9,7 @@
   debug: 
     var: webpage
 
-- name: sleep for 600 seconds and continue with play
+- name: sleep for 2 seconds and continue with play
   wait_for: timeout=2
 
 - name: Curl website
