@@ -3,7 +3,19 @@
   uri:
     url: "http://{{ inventory_hostname }}"
     return_content: yes
-  delegate_to: localhost
+  register: webpage  
+
+- name: print details
+  debug: 
+    var: webpage
+
+- name: sleep for 600 seconds and continue with play
+  wait_for: timeout=2
+
+- name: Curl website
+  uri:
+    url: "http://{{ inventory_hostname }}"
+    return_content: yes
   register: webpage  
 
 - name: print details
