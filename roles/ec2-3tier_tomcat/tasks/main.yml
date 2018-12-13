@@ -1,16 +1,12 @@
-  - name: install httpd
+  - name: install tomcat
     package:
       name: httpd
       state: latest
+      
   - name: enable tomcat at boot
     service:
-      name: tomcat
+      name: httpd
       enabled: yes
-
-  - name: create ansible tomcat directory
-    file:
-      path: /usr/share/tomcat/webapps/ansible
-      state: directory
 
   - name: copy static index.html to tomcat webapps/ansible/index.html
     template:
@@ -18,7 +14,7 @@
       dest: /var/www/html/index.html
       mode: 0644
 
-  - name: start httpd
+  - name: start tomcat
     service:
       name: httpd
       state: started
