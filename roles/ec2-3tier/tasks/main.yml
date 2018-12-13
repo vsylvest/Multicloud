@@ -33,7 +33,7 @@
         key_name: "{{ ec2_keypair }}"
         region: "{{ ec2_region }}"
         wait: true
-        count: "{{ ec2_dbserver_instance_count|int }}"'ansible_group':'dbservers'
+        count: "{{ ec2_dbserver_instance_count|int }}"
         instance_tags: "{'ansible_group':'appdbs', 'ansible_group':'QA','type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
         vpc_subnet_id: "{{ ec2_subnet_id }}"
         assign_public_ip: yes
