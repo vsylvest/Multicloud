@@ -8,7 +8,7 @@
     region: "{{ ec2_region }}"
     wait: true
     count: "{{ ec2_webserver_instance_count }}"
-    instance_tags: "{'ansible_group':'webservers', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier''Webserver'}"
+    instance_tags: "{'ansible_group':'webservers', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier-''Webserver'}"
     vpc_subnet_id: "{{ ec2_subnet_id }}"
     assign_public_ip: yes
     group_id: "{{ ec2_security_group }}"
@@ -24,7 +24,7 @@
     region: "{{ ec2_region }}"
     wait: true
     count: "{{ ec2_dbserver_instance_count|int }}"
-    instance_tags: "{'ansible_group':'appdbs', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier''Appdbs'}"
+    instance_tags: "{'ansible_group':'appdbs', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier-''Appdbs'}"
     vpc_subnet_id: "{{ ec2_subnet_id }}"
     assign_public_ip: yes
     group_id: "{{ ec2_security_group }}"  # or you can say 'default' here
@@ -40,7 +40,7 @@
     region: "{{ ec2_region }}"
     wait: true
     count: "{{ ec2_lbserver_instance_count|int }}"
-    instance_tags: "{'ansible_group':'frontends', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier''Frontend'}"
+    instance_tags: "{'ansible_group':'frontends', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier-''Frontend'}"
     vpc_subnet_id: "{{ ec2_subnet_id }}"
     assign_public_ip: yes
     group_id: "{{ ec2_security_group }}"  # or you can say 'default' here
@@ -56,7 +56,7 @@
     region: "{{ ec2_region }}" 
     wait: true
     count: "{{ ec2_monitoring_instance_count|int }}"
-    instance_tags: "{'ansible_group':'monitoring', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier''Monitoring'}"
+    instance_tags: "{'ansible_group':'monitoring', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'3Tier-''Monitoring'}"
     vpc_subnet_id: "{{ ec2_subnet_id }}"
     assign_public_ip: yes
     group_id: "{{ ec2_security_group }}"  # or you can say 'default' here

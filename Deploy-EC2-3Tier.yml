@@ -1,29 +1,24 @@
 ---
-- name: add in memory hosts
-  hosts: all
-  roles:
-  - { name: openstack_add_host }
-
 - name: enable repos on all instances
-  hosts: QA
+  hosts: tag_ansible_group
   gather_facts: false
   roles:
   - { name: ec2-3tier_repo }
 
 - name: Install HA on frontend
-  hosts: frontends
+  hosts: tag_Name_3Tier-Frontend
   gather_facts: false
   roles:
   - { name: ec2-3tier_haproxy }
 
 - name: Install postgres on DB
-  hosts: appdbs
+  hosts: tag_Name_3Tier-Appdbs
   gather_facts: false
   roles:
   - { name: ec2-3tier_postgres }
  
 - name: Install tomcat on Webservers
-  hosts: webservers
+  hosts: tag_Name_3Tier-Webserver
   gather_facts: false
   roles:
   - { name: ec2-3tier_tomcat }
