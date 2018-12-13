@@ -1,10 +1,8 @@
 ---
-- name : Simple playbook
+- name: Simple playbook
   hosts: localhost 
   gather_facts: False
   tasks:
-
-    - block:
       - name: EC2 Launch webserver instances
         ec2:
           image: "{{ ec2_image }}"
