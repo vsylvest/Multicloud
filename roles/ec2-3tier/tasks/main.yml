@@ -33,8 +33,8 @@
         key_name: "{{ ec2_keypair }}"
         region: "{{ ec2_region }}"
         wait: true
-        count: "{{ ec2_dbserver_instance_count|int }}"
-        instance_tags: "{'ansible_group':'dbservers', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
+        count: "{{ ec2_dbserver_instance_count|int }}"'ansible_group':'dbservers'
+        instance_tags: "{'ansible_group':'appdbs', 'ansible_group':'QA','type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
         vpc_subnet_id: "{{ ec2_subnet_id }}"
         assign_public_ip: yes
         group_id: "{{ ec2_security_group }}"  # or you can say 'default' here
@@ -50,7 +50,7 @@
         region: "{{ ec2_region }}"
         wait: true
         count: "{{ ec2_lbserver_instance_count|int }}"
-        instance_tags: "{'ansible_group':'lbservers', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
+        instance_tags: "{'ansible_group':'frontends','ansible_group':'QA','type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
         vpc_subnet_id: "{{ ec2_subnet_id }}"
         assign_public_ip: yes
         group_id: "{{ ec2_security_group }}"  # or you can say 'default' here
@@ -66,7 +66,7 @@
         region: "{{ ec2_region }}" 
         wait: true
         count: "{{ ec2_monitoring_instance_count|int }}"
-        instance_tags: "{'ansible_group':'monitoring', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
+        instance_tags: "{'ansible_group':'monitoring','ansible_group':'QA','type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
         vpc_subnet_id: "{{ ec2_subnet_id }}"
         assign_public_ip: yes
         group_id: "{{ ec2_security_group }}"  # or you can say 'default' here
