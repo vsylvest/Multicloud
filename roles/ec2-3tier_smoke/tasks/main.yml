@@ -3,11 +3,12 @@
   uri:
     url: "http://{{ inventory_hostname }}"
     return_content: yes
+  delegate_to: localhost
   register: webpage  
 
 - name: print details
   debug: 
-    msg: "{{ webpage }}"
+    var: webpage
 
 #
 #- name: Fail if Status Code is not 200
