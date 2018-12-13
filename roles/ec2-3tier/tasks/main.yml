@@ -2,7 +2,7 @@
 # ===========
 # This playbook create an Azure VM with public IP, and open 22 port for SSH
 ---
-- name : 3Tier EC2 Provisioning
+- name: 3Tier EC2 Provisioning
   hosts: localhost 
   gather_facts: False
   vars:
