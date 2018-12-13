@@ -6,19 +6,19 @@
   - { name: ec2-3tier_repo }
 
 - name: Install HA on frontend
-  hosts: tag_Name_3Tier-Frontend
+  hosts: tag_Name_3TierFrontend
   gather_facts: false
   roles:
   - { name: ec2-3tier_haproxy }
 
 - name: Install postgres on DB
-  hosts: tag_Name_3Tier-Appdbs
+  hosts: tag_Name_3TierAppdbs
   gather_facts: false
   roles:
   - { name: ec2-3tier_postgres }
  
 - name: Install tomcat on Webservers
-  hosts: tag_Name_3Tier-Webserver
+  hosts: tag_Name_3TierWebserver
   gather_facts: false
   roles:
   - { name: ec2-3tier_tomcat }
