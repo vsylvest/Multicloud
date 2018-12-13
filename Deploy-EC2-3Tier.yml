@@ -24,3 +24,8 @@
   roles:
   - { name: ec2-3tier_tomcat }
 
+- name: Install tomcat on Webservers
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - { name: ec2-3tier_smoke }
