@@ -15,8 +15,8 @@ ec2_region: ap-southeast-2
 ec2_image: ami-67589505
 ec2_instance_type: m1.small
 ec2_keypair: ec2-key
-ec2_security_group: sg-0ddaf92da660d5ab2
-ec2_subnet_id: subnet-0b9574b14cad348b6
+ec2_security_group: sg-08064a0548ab2b62c
+ec2_subnet_id: subnet-60449038
 instance_tag: 'cattle'
 wait_for_port: 22
 
