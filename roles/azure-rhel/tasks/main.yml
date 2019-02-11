@@ -55,7 +55,7 @@
  - name: Azure Create rhel VM
    azure_rm_virtualmachine:
      resource_group: "{{ resource_group }}"
-     name: rhel
+     name: rhel-7
      vm_size: Standard_DS1_v2
      os_type: Linux
      admin_username: az-user
