@@ -7,4 +7,4 @@
   hosts: localhost 
   gather_facts: False
   roles:
-    - vsphere-rhel
+    - "{{ cloud_provider }}-{{ os_image }}"
