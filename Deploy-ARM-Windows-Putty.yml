@@ -12,6 +12,6 @@
   tasks:
     - name: install putty
       win_chocolatey:
-        name: putty.install
+        name: putty
         state: present
         force: yes
