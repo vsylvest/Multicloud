@@ -29,10 +29,11 @@
         "tag:Name": "{{ instance_tag }}" 
     register: vmfacts 
     
-  when: action == 'create'
 
   - debug: msg="{{ item.instance_id }}"
     with_items: '{{ vmfacts.instances }}'
+
+  when: action == 'create'
 
 - block:
   - name: Enumerate all tagged instances in ec2
@@ -53,5 +54,4 @@
       state: absent
       instance_ids: '{{ item.instance_id }}'
     with_items: '{{ vmfacts.instances }}'
-    
   when: action == 'delete'
